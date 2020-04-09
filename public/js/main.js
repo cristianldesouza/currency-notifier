@@ -11,6 +11,7 @@ let valueToNotify = 0.00;
 let NotifyVariable = 'up';
 let dolarValue = 0.00;
 let check = false;
+let notified = false;
 
 if ('Notification' in window) {
 
@@ -34,8 +35,8 @@ if ('Notification' in window) {
 }
 
 $(document).ready(function () {
-    getDolaPrice(false);
-    setInterval(() => { getDolaPrice(check) }, 30000);
+    getDolaPrice(check);
+    setInterval(() => { getDolaPrice(check) }, 4000);
 });
 
 
@@ -50,9 +51,9 @@ function doNotify(tt, msg) {
     let t = Date.now() + 120000;    //2 mins in future
     let options = {
         body: msg, 
-        //data: { prop1: 123, prop2: "Steve" },
-        //lang: 'en-CA',
-        //icon: './img/calendar-lg.png',
+        data: { prop1: 123, prop2: "Steve" },
+        lang: 'en-CA',
+        icon: './img/calendar-lg.png',
         timestamp: t,
         vibrate: [100, 200, 100]
     }
@@ -86,19 +87,21 @@ function getDolaPrice(check) {
                             console.log('dolar valendo: ' + valor);
                             $('#dolar-price').text('R$ ' + valor);
                             
-                            
                             if (check) {
-                                if (NotifyVariable === 'up') {
-                                    if (dolarValue >= valor) {
-
+                                if (NotifyVariable == 'up') {
+                                    console.log(valor)
+                                    if (valor >= valueToNotify && !notified) {
+                                        doNotify('Dólar subiu!','Novo valor: R$' + valor);
+                                        notified = true;
                                     }
-                                } else {   
-                                    if (dolarValue <= valor) {
-
+                                } else if (NotifyVariable == 'down'){   
+                                    if (valor <= valueToNotify && !notified) {
+                                        doNotify('Dólar desceu!','Novo valor: R$' + valor)
+                                        notified = true;
                                     }
                                 }
                             }
-                            dolarValue = valor;
+                            //dolarValue = valor;
                             //doNotify('Preço do dolar: ', 'O valor do dólar comercial é de: R$ ' + valor);
                         });
                 }
@@ -116,6 +119,8 @@ function testeNotify() {
 
 function notifyVerification(xd) {
     NotifyVariable = xd;
-    valueToNotify = dolarValue;
+    valueToNotify = parseFloat($('#dolar-value').val());
     check = true;
+    notified = false;
+    console.log('setado! Valor para avisa: ' + valueToNotify+ ' ' + NotifyVariable)
 }
