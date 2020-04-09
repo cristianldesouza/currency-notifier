@@ -1,10 +1,7 @@
 var CACHE_NAME = 'currency-notifier';
 
 var urlsToCache = [
-  '/',
-  '/public/css/main.css',
-  '/public/js/main.js',
-  '/public/css/bootstrap.min.css'
+  '/'
 ];
 
 self.addEventListener('install', function(event) {

@@ -20,8 +20,6 @@ app.use(function(req, res, next){
 });
 
 
-
-
 //Route
 app.get('/favicon.ico', async function (req, res) {
 	res.redirect(301, '/public/favicon.ico')
