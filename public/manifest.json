@@ -1,0 +1,18 @@
+{
+    "name": "Currency Notifier",
+    "short_name": "CNotifier",
+    "theme_color": "#36c4d1",
+    "background_color": "#299ba6",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/?utm_source=homescreen",
+    "lang": "pt-BR",
+    "orientation": "any",
+    "icons": [
+      {
+        "src": "/public/img/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
