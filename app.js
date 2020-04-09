@@ -12,12 +12,11 @@ app.use("/public", express.static(__dirname + '/public/'));
 app.use("/sw.js", express.static(__dirname + '/public/js/sw.js'));
 
 
-app.use(function(request, response, next){
-    if(!request.secure){
-      response.redirect(301, "https://" + request.headers.host + request.url);
-    } else {
-        next();
+app.use(function(req, res, next){
+    if (req.headers["x-forwarded-proto"] === "https"){
+       return next();
     }
+    res.redirect("https://" + req.headers.host + req.url);  
 });
 
 
