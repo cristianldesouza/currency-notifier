@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const help = require('./helper.js');
+const middlewares = require('./middlewares');
 
 
 // Middlewares
@@ -10,6 +11,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use("/public", express.static(__dirname + '/public/'));
 app.use("/sw.js", express.static(__dirname + '/public/js/sw.js'));
+app.use(middlewares.httpRedirect);
+
+
 
 
 //Route
