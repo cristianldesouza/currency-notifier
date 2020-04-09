@@ -12,9 +12,9 @@ app.use("/public", express.static(__dirname + '/public/'));
 app.use("/sw.js", express.static(__dirname + '/public/js/sw.js'));
 
 
-//Routes
+//Route
 app.get('/favicon.ico', async function (req, res) {
-	res.redirect(301, '/public/imgs/favicon.ico')
+	res.redirect(301, '/public/favicon.ico')
 });
 
 app.get('/', async function (req, res) {
