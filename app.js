@@ -12,7 +12,11 @@ app.use("/public", express.static(__dirname + '/public/'));
 app.use("/sw.js", express.static(__dirname + '/public/js/sw.js'));
 
 
-//Route
+//Routes
+app.get('/favicon.ico', async function (req, res) {
+	res.redirect(301, '/public/imgs/favicon.ico')
+});
+
 app.get('/', async function (req, res) {
 
     let toSend = await help.compileAll([
