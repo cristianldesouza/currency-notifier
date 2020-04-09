@@ -39,10 +39,10 @@ app.get('/', async function (req, res) {
 });
 
 
-// app.listen(process.env.PORT || 3000, '0.0.0.0', function () {
-//     console.log('Running')
-//   });
-
-  app.listen(3000, '0.0.0.0', function () {
+app.listen(process.env.PORT || 3333, '0.0.0.0', function () {
     console.log('Running')
   });
+
+//   app.listen(3333, '0.0.0.0', function () {
+//     console.log('Running')
+//   });
