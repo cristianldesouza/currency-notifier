@@ -51,9 +51,9 @@ function doNotify(tt, msg) {
     let t = Date.now() + 120000;    //2 mins in future
     let options = {
         body: msg, 
-        data: { prop1: 123, prop2: "Steve" },
-        lang: 'en-CA',
-        icon: './img/calendar-lg.png',
+        //data: { prop1: 123, prop2: "Steve" },
+        //lang: 'en-CA',
+        //icon: './img/calendar-lg.png',
         timestamp: t,
         vibrate: [100, 200, 100]
     }
