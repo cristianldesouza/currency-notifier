@@ -28,6 +28,6 @@ app.get('/', async function (req, res) {
 });
 
 
-app.listen(3333, '0.0.0.0', function () {
+app.listen(80, '0.0.0.0', function () {
 	console.log('Running')
 });
